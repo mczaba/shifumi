@@ -32,6 +32,16 @@
 
         function round(player, computer){
             player = capitalize(player);
+            let test=false;
+            while (test===false){
+                if ((player === "Rock")||(player === "Paper")||(player === "Scissor")){
+                    test = true;
+                }
+                else {
+                    player = prompt("you need to type rock, paper or scissor");
+                    player = capitalize(player);
+                }
+            }
             let resultat = "";
             let win = ((player === "Paper") && (computer === "Rock")) || ((player === "Rock") && (computer === "Scissor")) || ((player === "Scissor") && (computer === "Paper"));
             if (player === computer){
