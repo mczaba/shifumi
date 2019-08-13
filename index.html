@@ -21,8 +21,17 @@
             }
             return play;
         }
-        
+        function capitalize(word){
+            let l = word.length;
+            let low = word.toLowerCase();
+            let first = low.slice(0,1);
+            let rest = low.slice(1,l);
+            first = first.toUpperCase();
+            return first + rest;
+        }
+
         function round(player, computer){
+            player = capitalize(player);
             let resultat = "";
             let win = ((player === "Paper") && (computer === "Rock")) || ((player === "Rock") && (computer === "Scissor")) || ((player === "Scissor") && (computer === "Paper"));
             if (player === computer){
@@ -37,10 +46,35 @@
             return resultat;
 
         }
-        let computer = computerPlay();
-        let player = prompt("What do you play ?");
-        let result = round(player, computer);
-        console.log("Your oppenent played " + computer + ", " + result);
+
+        function game(){
+            let i = 0;
+            let scorePlayer = 0;
+            let scoreComputer = 0;
+            while (i<5){
+                let computer = computerPlay();
+                let player = prompt("What do you play ?");
+                let result = round(player, computer);
+                if (result === "You win !") {
+                    scorePlayer++;
+                }
+                else if (result === "You lose !"){
+                    scoreComputer++;
+                }
+                console.log("Your oppenent played " + computer + ", " + result + " Current score : " + scorePlayer + "-" + scoreComputer);
+                i++;
+            }
+            if (scorePlayer > scoreComputer){
+                console.log("Final score : " + scorePlayer + "-" + scoreComputer + ". Congratulations, you win !");
+            }
+            else if (scorePlayer === scoreComputer){
+                console.log("Final score : " + scorePlayer + "-" + scoreComputer + ". It's a Draw !");
+            }
+            else {
+                console.log("Final score : " + scorePlayer + "-" + scoreComputer + ". You lose. You'll do better next time !");
+            }
+        }
+        game();
     </script>
 </body>
 </html>
