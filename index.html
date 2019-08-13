@@ -43,7 +43,8 @@
                 }
             }
             let resultat = "";
-            let win = ((player === "Paper") && (computer === "Rock")) || ((player === "Rock") && (computer === "Scissor")) || ((player === "Scissor") && (computer === "Paper"));
+            let win = ((player === "Paper") && (computer === "Rock")) || ((player === "Rock") && (computer === "Scissor")) || 
+                    ((player === "Scissor") && (computer === "Paper"));
             if (player === computer){
                 resultat = "Draw !";
             }
@@ -71,11 +72,11 @@
                 else if (result === "You lose !"){
                     scoreComputer++;
                 }
-                console.log("Your oppenent played " + computer + ", " + result + " Current score : " + scorePlayer + "-" + scoreComputer);
+                alert("Your oppenent played " + computer + ", " + result + " Current score : " + scorePlayer + "-" + scoreComputer);
                 i++;
             }
             if (scorePlayer > scoreComputer){
-                console.log("Final score : " + scorePlayer + "-" + scoreComputer + ". Congratulations, you win !");
+                alert("Final score : " + scorePlayer + "-" + scoreComputer + ". Congratulations, you win !");
             }
             else if (scorePlayer === scoreComputer){
                 alert("Final score : " + scorePlayer + "-" + scoreComputer + ". It's a Draw !");
