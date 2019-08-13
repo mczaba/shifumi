@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Shifumi</title>
 </head>
 <body>
     <script>
@@ -19,10 +19,28 @@
                     play = "Scissor";
                     break;
             }
-          return play;
+            return play;
         }
-        let play = computerPlay();
-        console.log(play);
+        
+        function round(player, computer){
+            let resultat = "";
+            let win = ((player === "Paper") && (computer === "Rock")) || ((player === "Rock") && (computer === "Scissor")) || ((player === "Scissor") && (computer === "Paper"));
+            if (player === computer){
+                resultat = "Draw !";
+            }
+            else if (win){
+                resultat = "You win !";
+            }
+            else {
+                resultat = "You lose !";
+            }
+            return resultat;
+
+        }
+        let computer = computerPlay();
+        let player = prompt("What do you play ?");
+        let result = round(player, computer);
+        console.log("Your oppenent played " + computer + ", " + result);
     </script>
 </body>
 </html>
