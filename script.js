@@ -2,7 +2,7 @@ const buttons = document.querySelectorAll("button");
 const resultDisplay = document.querySelector('#resultDisplay');
 let compScore = 0;
 let playerScore = 0;
-
+let gameDone = false;
 function computerPlay(){
     let nombre =  Math.floor((Math.random() * 3) + 1);
     let play =""
@@ -40,11 +40,33 @@ function round(player, computer){
 }
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
+        if (gameDone === true){
+            while (resultDisplay.firstChild) {
+                resultDisplay.removeChild(resultDisplay.firstChild);
+            }
+            gameDone = false;
+        }
         let comp = computerPlay();
         let result = round(button.id, comp);
         let display = document.createElement('p');
         display.textContent = "Your opponent played " + comp  + ", " + result + ". Current score : " + playerScore + " - " + compScore;
         resultDisplay.appendChild(display);
+        if (playerScore === 3){
+            let finalResult = document.createElement("p");
+            finalResult.textContent = "You win ! Final score : " + playerScore + " - " + compScore;
+            resultDisplay.appendChild(finalResult);
+            gameDone = true;
+            playerScore = 0;
+            compScore = 0;
+        }
+        if (compScore === 3){
+            let finalResult = document.createElement("p");
+            finalResult.textContent = "You lose ! Final score : " + playerScore + " - " + compScore;
+            resultDisplay.appendChild(finalResult);
+            gameDone = true;
+            playerScore = 0;
+            compScore = 0;
+        }
     })
 })
 
